@@ -1,0 +1,23 @@
+function [xa,t,code] = AMI3(b,R)
+%R la toc do bit
+Tb=1/R; % chu ki bit
+Nb=length(b); % so luong bit
+Ns=50; % so mau trong 1 chu ki
+Tw=Nb*Tb;
+ts=Tw/(Ns*Nb-1);
+t=0:ts:Tw;
+xa=[];
+c=-1;
+code=zeros(1,Nb);
+for i=1:Nb
+    if(b(i)==0)
+        xi=zeros(1,Ns);
+        xa=[xa xi];
+    else
+        c=c*(-1);
+        code(i)=c;
+        xi=c*ones(1,Ns);
+        xa=[xa xi];
+    end
+end
+end
