@@ -1,0 +1,22 @@
+function ng = nghiem(a,b)
+f=@(x) 4*x^3-13*x^2+13*x-10;
+if f(a)*f(b)>0
+    disp('khong ap dung duoc bisection');
+else
+    ex=1e-6;
+    if a>b
+        c=a;
+        a=b;
+        b=c;
+    end
+    while b-a>ex
+            mid=(b+a)/2;
+            if sign(f(a))==sign(f(mid))
+                a=mid;
+            else
+                b=mid;
+            end    
+    end
+    ng=mid;
+end
+end
