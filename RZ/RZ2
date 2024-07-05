@@ -1,0 +1,22 @@
+function [ t,y ] = rz( x, R, Ns )
+Tb=1/R;
+Nb=length(x);
+timewindow=Nb*Tb;
+ts=timewindow/(Ns-1);
+t=0:ts:timewindow;
+Nsp =round(Tb/ts);
+y=zeros(length(t));
+for i=1:Nsp:length(t)
+    for k=i:(i+round(Nsp/2))
+        if(k>=length(t))
+            k=length(t);
+        end
+        indx=fix(t(k)/Tb)+1;
+        if(indx>=length(x))
+            indx=length(x);
+        end
+        y(k)=x(indx);
+    end
+end
+end
+
