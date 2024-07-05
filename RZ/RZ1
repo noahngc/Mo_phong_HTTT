@@ -1,0 +1,17 @@
+function [x,t,code]= RZ(b,R)
+Tb=1/R;
+Ns=50;
+Nb=length(b);
+Nsw=Ns*Nb;
+ts=Tb*Nb/(Nsw-1);
+t=0:ts:Tb*Nb;
+x=[];
+for i=1:Nb
+    xm=zeros(1,Ns);
+    if(b(i)==1)
+        xm(1:Ns/2)=1;
+    end
+    x=[x xm];
+end
+code=b;
+end
