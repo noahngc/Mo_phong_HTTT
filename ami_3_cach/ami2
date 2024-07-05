@@ -1,0 +1,29 @@
+function a1=ami2(a,b)
+Tb=b;
+a1=zeros(1,length(a));
+c=1;
+for i=1:length(a)
+    if a(i)==1
+        a1(i)=1*c;
+        c=c*(-1);
+    end
+end
+timewindow=Tb*length(a1);
+Ns=length(a)*20; 
+ts=timewindow/(Ns-1);
+t=0:ts:timewindow;
+y=zeros(1,length(t));
+for i=1:length(t)
+    indx=fix(t(i)/Tb)+1;
+    if indx>length(a1)
+        indx=length(a1);
+    end
+    y(i)=a1(indx);
+end
+figure;
+plot(t,y,'Linewidth',1.25);
+grid on;
+xlabel('time(ns)');
+ylabel('bien do');
+title('Ma AMI');
+end
