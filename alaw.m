@@ -1,0 +1,7 @@
+function [ y,amax ] = alaw(x,A)
+amax=max(abs(x));
+xn=x/amax;
+y=sign(x).*(abs(xn)<1/A).*(A*abs(xn)/(1+log(A)))+sign(x).*(abs(xn)>=1/A).*((1+log(A*abs(xn)))/(1+log(A)));
+y=y*amax;
+end
+
