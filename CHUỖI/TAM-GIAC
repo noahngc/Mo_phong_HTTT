@@ -1,0 +1,12 @@
+function [t,y]=tamgiac(b,T)
+Nb=b+2;
+Ns=250;
+ts=T/(Ns-1);
+Tw=T*Nb;
+t=0:ts:Tw;
+y=zeros(length(t));
+for i=1:length(t)
+    y(i)=1-abs(mod(t(i),T)-T/2)*2/T;
+end
+plot(t,y);
+end
