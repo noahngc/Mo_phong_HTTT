@@ -1,0 +1,36 @@
+function [ t,y ] = ami1( b,a )
+Tb=1/b;
+Nb=length(a);
+timewindow=Nb*Tb;
+Ns=250;
+ts=timewindow/(Ns-1);
+t=0:ts:timewindow;
+y=zeros(length(t));
+c=1;
+e=zeros(length(a));
+for i=1:length(t)
+ 
+        indx=fix(t(i)/Tb)+1;
+     
+        if(indx>=length(a))
+            indx=length(a);
+           
+        end
+     
+         if(a(indx)==1)
+             if(e(indx)==0)
+                 c=c+1;
+             end
+           e(indx)=1;
+           
+           if mod(c,2)==0
+               y(i)=1;
+           else
+               y(i)=-1;
+           end
+        end
+  
+end
+plot(t,y);
+end
+
