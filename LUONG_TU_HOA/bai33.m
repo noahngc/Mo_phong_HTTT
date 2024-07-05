@@ -1,0 +1,20 @@
+A = 87.7;
+M = 8;
+w=4*pi; T=2*pi/w;
+fs=20;
+Ts=1/fs;
+t=0:Ts:T;
+x=2*cos(w*t);
+[y,amax] = alaw(x,A); 
+[code,yq] = uniform_pcm(y,M); 
+xq = invalaw(yq,A); 
+subplot(3,1,1);
+plot(t,x);
+title('tin hieu goc x');
+subplot(3,1,2);
+stem(t,x);
+title('tin hieu lay mau ');
+subplot(3,1,3);
+stairs(t, xq);
+title('tin luong tu ');
+code
